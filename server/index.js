@@ -9,14 +9,15 @@ const app = express();
 dotenv.config();
 
 
+
+//Must use bodyparser first for requests
+app.use(bodyParser.json({limit: "30mb", extended: true}));
+app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
+
 app.use(cors());
 //every post route will start with /post 
 //locahlhost:5000/post leads to postroutes
 app.use('/posts', postRoutes);
-
-app.use(bodyParser.json({limit: "30mb", extended: true}));
-app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
-
 
 const CONNECTION_URL = process.env.CONNECTION_URL; 
 const PORT = process.env.PORT || 5000;
