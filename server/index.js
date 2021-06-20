@@ -18,6 +18,9 @@ app.use(cors());
 //every post route will start with /post 
 //locahlhost:5000/post leads to postroutes
 app.use('/posts', postRoutes);
+app.get('/', (req, res) => {
+    res.send("hello to Memories API");
+})
 
 const CONNECTION_URL = process.env.CONNECTION_URL; 
 const PORT = process.env.PORT || 5000;
